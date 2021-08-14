@@ -19,9 +19,10 @@ body,
 
 #List-modal-container,
 #Card-modal-container {
+  top: 30%;
+  left: 30%;
   position: absolute;
   width: 500px;
-  height: 300px;
   background-color: aliceblue;
   display: flex;
   flex-direction: column;

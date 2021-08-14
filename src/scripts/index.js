@@ -7,9 +7,12 @@
     saveItemToLocalStorage,
     renderModal,
     getListContainer,
+    getUpdatedList,
+    cancelModal,
+    addListCard,
   } = AppFunctions;
 
-  const { rootContainer, getModal } = Components;
+  const { rootContainer } = Components;
 
   // ****State****
   let todoList = getItemFromLocalStorage("todoList") ?? [];
@@ -70,10 +73,16 @@
     if (event.target.nodeName === "BUTTON") {
       switch (event.target.className) {
         case "add-list-button":
-          console.log("add list clicked");
+          renderModal("List");
           break;
         case "add-card-button":
-          console.log("add card clicked");
+          renderModal("Card", event.target.attributes.listid.value);
+          break;
+        case "cancel-modal-button":
+          cancelModal();
+          break;
+        case "add-modal-button":
+          addListCard(event.target);
           break;
         case "delete-list-button":
           console.log("delete list btn");
@@ -118,13 +127,18 @@
   });
 
   rootContainer.addEventListener("drop", function (event) {
-    // event.preventDefault();
     const cardId = event.dataTransfer.getData("text");
     const draggedCard = document.querySelector(`[cardid= '${cardId}']`);
     const listBodyElement = getListContainer(event.target);
     if (listBodyElement.className === "list-body") {
       const listId = listBodyElement.attributes.listId.value;
-      console.log("cardId", cardId, "listId", listId);
+      const params = {
+        listId,
+        cardId,
+        type: "AddCard",
+      };
+      todoList = getUpdatedList(todoList, params);
+      updateList(todoList);
       event.target.style.background = "";
       draggedCard.parentNode.removeChild(draggedCard);
       listBodyElement.appendChild(draggedCard);
@@ -134,7 +148,4 @@
   // ****Mounting****
   renderHeader();
   renderList(todoList);
-  renderModal();
-  console.log(todoList);
-  console.log(utils.generateId());
 })();

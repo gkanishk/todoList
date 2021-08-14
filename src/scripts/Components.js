@@ -24,7 +24,7 @@ const Components = (function () {
     </div>`;
 
   const getModal = (type = "List", listId = "") => {
-    return ` <div id='${type}-modal-container'>
+    return `<div id='${type}-modal-container' class='modal'>
                 <div class="modal-title">
                     Add ${type}
                 </div>
@@ -43,8 +43,8 @@ const Components = (function () {
                     }
                 </div>
                 <div class="modal-footer">
-                    <button class="cancel-modal-button" listid=${listId}>Cancel</button>
-                    <button class="add-modal-button" listid=${listId}>Add</button>
+                    <button class="cancel-modal-button" listid='${listId}' >Cancel</button>
+                    <button class="add-modal-button" listid='${listId}' >Add</button>
                 </div>
             </div>`;
   };
