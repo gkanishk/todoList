@@ -1,0 +1,91 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  position: relative;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+}
+
+#List-modal-container,
+#Card-modal-container {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.modal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 80vh;
+  justify-content: flex-start;
+  padding: 2rem;
+}
+
+.list-container {
+  height: 100%;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-width: thin;
+  border-color: "#000";
+  border-style: solid;
+  padding: 1rem;
+  margin: 0 0.5rem;
+}
+
+.list-header {
+  margin: 0.5rem;
+  border-bottom: 2px solid black;
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.list-body {
+  flex: 1;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+
+  background-color: aqua;
+}
+
+.card-container {
+  width: 200px;
+  border-width: thin;
+  border-color: "#000";
+  border-style: solid;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.card-header {
+  display: flex;
+}
