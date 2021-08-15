@@ -32,7 +32,7 @@ const AppMethods = (function () {
                     }
                   </div>
                   <div class="list-footer">
-                    <button class="add-card-button" listid='${id}' >Add Card</button>
+                    <button class="add-card-button" listid='${id}'>Add Card</button>
                   </div>
                 </div>`;
         })

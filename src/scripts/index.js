@@ -18,12 +18,6 @@
   // ****State****
   let todoList = getItemFromLocalStorage("todoList") ?? [];
 
-  function updateList(list) {
-    todoList = list;
-    saveItemToLocalStorage("todoList", todoList);
-    renderList(todoList);
-  }
-
   // ****Event Listeners****
 
   // Event for global Search
@@ -108,7 +102,7 @@
    * Drag and drop events for dragging card from one list
    * to another list.
    */
-  rootContainer.addEventListener("dragstart", (event) => {
+  rootContainer.addEventListener("dragstart", function (event) {
     event.dataTransfer.setData(
       "text/plain",
       event.target.attributes.cardid.value
@@ -120,13 +114,13 @@
     event.preventDefault();
   });
 
-  rootContainer.addEventListener("dragenter", (event) => {
+  rootContainer.addEventListener("dragenter", function (event) {
     if (event.target.className === "list-container") {
       event.target.style.background = "pink";
     }
   });
 
-  rootContainer.addEventListener("dragleave", (event) => {
+  rootContainer.addEventListener("dragleave", function (event) {
     if (event.target.className === "list-container") {
       event.target.style.background = "";
     }
@@ -150,6 +144,14 @@
       listBodyElement.appendChild(draggedCard);
     }
   });
+
+  // ****Methods****
+
+  function updateList(list) {
+    todoList = list;
+    saveItemToLocalStorage("todoList", todoList);
+    renderList(todoList);
+  }
 
   // ****Mounting****
   renderHeader();
