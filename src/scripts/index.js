@@ -29,7 +29,7 @@
   });
   // Click event for buttons
   rootContainer.addEventListener("click", (event) => {
-    event.stopPropagation();
+    // event.stopPropagation();
     /**
      * This will have five events for:
      * 1. Adding a new list
@@ -100,6 +100,7 @@
           updateList(todoList);
           break;
         default:
+          console.log(buttonEvent);
           break;
       }
     }

@@ -4,20 +4,22 @@ const Components = (function () {
   const getHeader = () => {
     return `<nav id="navbar">
                 <h1 id="page-title" draggable="true">Todo List</h1>
-                <input id="search-box" type="text"/>
-                <button class="add-list-button">Add List</button>
+                <input id="search-box" type="text" placeholder="Search Card"/>
+                <button class="add-list-button">+ Add List</button>
             </nav>`;
   };
 
-  const getCard = ({ id, title, description }, listId) => {
+  const getCard = ({ id, title, description, isFavoriate }, listId) => {
     return `<div class="card-container" cardId=${id} draggable="true" >
                 <div class="card-header">
                     <span class="card-title">
                         ${title}
                     </span>
                     <div class="card-button-container">
-                    <button class="favourite-button" cardid='${id}' listId='${listId}'>Fav</button>
-                    <button class="delete-card-button"  cardid='${id}' listId='${listId}'>Delete</button>
+                    <button class="favourite-button" cardid='${id}' listId='${listId}'><i class='${
+      isFavoriate ? "fas fa-star" : "far fa-star"
+    }'></i></button>
+                    <button class="delete-card-button"  cardid='${id}' listId='${listId}'><i class="far fa-trash-alt"></i></button>
                     </div>
                 </div>
                 <p class="card-description">

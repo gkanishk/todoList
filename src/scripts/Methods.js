@@ -21,8 +21,10 @@ const AppMethods = (function () {
         .map(({ id, title, cards }, index) => {
           return `<div class="list-container">
                   <div class="list-header">
-                    <span class="list-title">${title}</span>
-                    <button class="delete-list-button" listId='${id}' listIndex='${index}'>Delete List</button>
+                    <span class="list-title">
+                    ${title} <span class="card-count">${cards.length}</span>
+                    </span>
+                    <button class="delete-list-button" listId='${id}' listIndex='${index}'><i class="far fa-trash-alt"></i></button>
                   </div>
                   <div class="list-body" listId='${id}'>
                     ${
@@ -32,7 +34,7 @@ const AppMethods = (function () {
                     }
                   </div>
                   <div class="list-footer">
-                    <button class="add-card-button" listid='${id}'>Add Card</button>
+                    <button class="add-card-button" listid='${id}'>+ Add Card</button>
                   </div>
                 </div>`;
         })

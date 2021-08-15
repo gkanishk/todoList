@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css");
+
+* {
+  font-family: "Montserrat", sans-serif;
+  --blue: #2020f9;
+  --grey: rgb(240, 240, 240);
+  --dark-grey: rgba(189, 188, 188, 0.815);
+  --white: rgb(244, 249, 253);
+}
+
 html,
 body,
 #root {
@@ -14,7 +25,25 @@ body,
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 2rem;
+  padding: 0rem 2rem;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
+}
+
+.add-list-button {
+  border: transparent;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--blue);
+  color: var(--white);
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+#search-box {
+  border: transparent;
+  background-color: var(--grey);
+  padding: 0.3rem 0.5rem;
+  width: 250px;
+  border-radius: 7px;
 }
 
 #List-modal-container,
@@ -23,7 +52,7 @@ body,
   left: 30%;
   position: absolute;
   width: 500px;
-  background-color: aliceblue;
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -52,21 +81,34 @@ body,
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border-width: thin;
-  border-color: "#000";
-  border-style: solid;
-  padding: 1rem;
+  padding: 0.7rem;
   margin: 0 0.5rem;
+  background-color: var(--grey);
+  border-top: 3px solid #2020f9;
 }
 
 .list-header {
-  margin: 0.5rem;
-  border-bottom: 2px solid black;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--dark-grey);
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.7rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.list-title {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.card-count {
+  font-weight: 300;
+  font-size: small;
+  background-color: var(--dark-grey);
+  padding: 0 0.3rem;
+  border-radius: 50%;
+  color: aliceblue;
 }
 
 .list-body {
@@ -76,20 +118,50 @@ body,
   width: 100%;
 }
 
+.list-footer {
+  width: 100%;
+  /* background-color: var(--dark-grey); */
+}
+
+.add-card-button {
+  display: block;
+  margin: auto;
+  border: transparent;
+  color: var(--blue);
+  font-weight: 600;
+}
+
 .card-container {
-  width: 200px;
-  border-width: thin;
-  border-color: "#000";
-  border-style: solid;
-  padding: 1rem;
+  width: 240px;
+  background-color: var(--white);
+  padding: 0.5rem;
   margin: 0.5rem 0;
+  border-radius: 5px;
 }
 
 .card-header {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: medium;
+  font-weight: 400;
+}
+
+.card-description {
+  font-size: small;
+  font-weight: 300;
+  word-break: break-all;
 }
 
 #container {
   width: 100vw;
   overflow-y: auto;
+}
+
+i {
+  display: block;
+  pointer-events: none;
 }
