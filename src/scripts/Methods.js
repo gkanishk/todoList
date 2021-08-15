@@ -25,7 +25,11 @@ const AppMethods = (function () {
                     <button class="delete-list-button" listId='${id}' listIndex='${index}'>Delete List</button>
                   </div>
                   <div class="list-body" listId='${id}'>
-                    ${cards.map((card) => getCard(card, id)).join("")}
+                    ${
+                      cards.length > 0
+                        ? cards.map((card) => getCard(card, id)).join("")
+                        : `<span class="empty-list">No Cards</span>`
+                    }
                   </div>
                   <div class="list-footer">
                     <button class="add-card-button" listid='${id}' >Add Card</button>

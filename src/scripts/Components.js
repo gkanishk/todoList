@@ -2,10 +2,10 @@ const Components = (function () {
   const rootContainer = document.querySelector("#root");
 
   const getHeader = () => `<nav id="navbar">
-                        <h1 id="page-title" draggable="true">Todo List</h1>
-                        <input id="search-box" type="text"/>
-                        <button class="add-list-button">Add List</button>
-                    </nav>`;
+                                <h1 id="page-title" draggable="true">Todo List</h1>
+                                <input id="search-box" type="text"/>
+                                <button class="add-list-button">Add List</button>
+                            </nav>`;
 
   const getCard = ({ id, title, description }, listId) =>
     `<div class="card-container" cardId=${id} draggable="true" >
