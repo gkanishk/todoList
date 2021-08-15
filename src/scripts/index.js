@@ -119,6 +119,12 @@
       "text/plain",
       event.target.attributes.cardid.value
     );
+    event.target.style.opacity = 0.5;
+  });
+
+  rootContainer.addEventListener("dragend", function (event) {
+    // reset the transparency
+    event.target.style.opacity = "";
   });
 
   rootContainer.addEventListener("dragover", function (event) {
