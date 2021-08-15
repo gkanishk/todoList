@@ -79,14 +79,20 @@
           }
           break;
         case "delete-list-button":
-          const index = buttonEvent.attributes.listindex.value;
-          todoList.splice(index, 1);
-          updateList(todoList);
+          const deleteList = confirm("Are you sure delete list?");
+          if (deleteList) {
+            const index = buttonEvent.attributes.listindex.value;
+            todoList.splice(index, 1);
+            updateList(todoList);
+          }
           break;
         case "delete-card-button":
-          params.type = "RemoveCard";
-          todoList = getUpdatedList(todoList, params);
-          updateList(todoList);
+          const deleteCard = confirm("Are you sure delete card?");
+          if (deleteCard) {
+            params.type = "RemoveCard";
+            todoList = getUpdatedList(todoList, params);
+            updateList(todoList);
+          }
           break;
         case "favourite-button":
           params.type = "MarkCardAsFavourite";
