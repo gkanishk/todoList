@@ -149,8 +149,8 @@ const AppMethods = (function () {
       items.forEach((list) => {
         list.cards = list.cards.filter(
           (card) =>
-            card.title.toLowerCase().includes(searchValue) ||
-            card.description.toLowerCase().includes(searchValue)
+            card.title.toLowerCase().includes(searchValue.trim()) ||
+            card.description.toLowerCase().includes(searchValue.trim())
         );
       });
       items = items.filter((list) => list.cards.length > 0);
