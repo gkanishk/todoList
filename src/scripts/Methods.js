@@ -94,6 +94,13 @@ const AppMethods = (function () {
           listItems.forEach((list) => {
             if (list.id === params?.listId) list.cards.push(getCard);
           });
+          // Sort cards using createdAt
+          listItems.forEach((list) => {
+            list.cards = list.cards.sort(
+              (cardOne, cardTwo) =>
+                new Date(cardOne.createdAt) - new Date(cardTwo.createdAt)
+            );
+          });
         }
         return listItems;
       case "AddCard":
