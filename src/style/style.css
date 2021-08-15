@@ -71,10 +71,10 @@ body,
 #container {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  height: 80vh;
+  height: 75vh;
   justify-content: flex-start;
   padding: 2rem;
+  overflow-y: auto;
 }
 
 .list-container {
@@ -172,11 +172,6 @@ body,
   font-size: small;
   font-weight: 300;
   word-break: break-all;
-}
-
-#container {
-  width: 100vw;
-  overflow-y: auto;
 }
 
 i {
