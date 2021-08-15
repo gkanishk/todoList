@@ -160,7 +160,7 @@ const AppMethods = (function () {
   }
 
   function getSortedValue(listItems = [], filters) {
-    if (filters.name.length > 0) {
+    if ((filters.name.length > 0) & filters.isName) {
       listItems.forEach((list) => {
         list.cards.sort((cardOne, cardTwo) =>
           filters.name === "ascending"
@@ -169,7 +169,7 @@ const AppMethods = (function () {
         );
       });
     }
-    if (filters.date.length > 0) {
+    if (filters.date.length > 0 && filters.isDate) {
       listItems.forEach((list) => {
         list.cards.sort((cardOne, cardTwo) =>
           filters.date === "past"

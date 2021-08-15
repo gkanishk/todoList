@@ -64,28 +64,30 @@ const Components = (function () {
   const getFilters = () => {
     return `<div class="sortby-container">
               <div>
-              <span>Sort By:</span>
-    <div class="filter-container">
-    <div id="name-filter-container">
-    Name: 
-    <label>
-      <input type="radio" name="name-filter" value="ascending" id="sortby-name-button"/> Ascending
-      </label>
-      <label>
-      <input type="radio" name="name-filter" value="descending" id="sortby-name-button"/> Descending
-      </label>
-      </div>
-    <div id="created-filter-container">
-    Created: 
-      <label>
-      <input type="radio" name="date-filter" value="recent" id="sortby-date-button"/> Recently
-      </label>
-      <label>
-      <input type="radio" name="date-filter" value="past" id="sortby-date-button" selected/> Last
-      </label>
-    </div>
-    </div>
-    </div>
+                <span>Sort By:</span>
+                <div class="filter-container">
+                  <div id="name-filter-container">
+                  <input type="checkbox" name="sortName" id="is-sortby-name" />
+                  Name: 
+                  <label>
+                    <input type="radio" name="name-filter" value="ascending" id="sortby-name-button"/> Ascending
+                    </label>
+                    <label>
+                    <input type="radio" name="name-filter" value="descending" id="sortby-name-button"/> Descending
+                    </label>
+                    </div>
+                    <div id="created-filter-container">
+                    <input type="checkbox" name="sortDate" id="is-sortby-date" />
+                    Created: 
+                      <label>
+                      <input type="radio" name="date-filter" value="recent" id="sortby-date-button"/> Recently
+                      </label>
+                      <label>
+                      <input type="radio" name="date-filter" value="past" id="sortby-date-button" selected/> Last
+                      </label>
+                    </div>
+                  </div>
+                </div>
             </div>`;
   };
 

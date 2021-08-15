@@ -20,7 +20,9 @@
   let todoList = getItemFromLocalStorage("todoList") ?? [];
   let filters = {
     name: "",
-    date: "",
+    isName: false,
+    date: "past",
+    isDate: false,
   };
 
   // ****Event Listeners****
@@ -173,6 +175,14 @@
         filters.name = event.target.value;
         sortCards();
         break;
+      case "sortName":
+        filters.isName = !filters.isName;
+        sortCards();
+        break;
+      case "sortDate":
+        filters.isDate = !filters.isDate;
+        sortCards();
+        break;
       default:
         break;
     }
@@ -194,4 +204,5 @@
   // ****Mounting****
   renderHeader();
   renderList(todoList);
+  sortCards();
 })();
