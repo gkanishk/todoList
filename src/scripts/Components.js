@@ -16,10 +16,10 @@ const Components = (function () {
                         ${title}
                     </span>
                     <div class="card-button-container">
-                    <button class="favourite-button" cardid='${id}' listId='${listId}'><i class='${
+                    <button class="favourite-button" cardid='${id}' listId='${listId}' title='Favourite'><i class='${
       isFavoriate ? "fas fa-star" : "far fa-star"
     }'></i></button>
-                    <button class="delete-card-button"  cardid='${id}' listId='${listId}'><i class="far fa-trash-alt"></i></button>
+                    <button class="delete-card-button"  cardid='${id}' listId='${listId}' title='Delete Cart'><i class="far fa-trash-alt"></i></button>
                     </div>
                 </div>
                 <p class="card-description">
@@ -37,13 +37,13 @@ const Components = (function () {
                     <label>
                         Title
                     </label>
-                    <input type="text" id="title-input" />
+                    <input type="text" id="title-input" placeholder="Enter Title" />
                     ${
                       type === "Card"
                         ? `<label>
                             Description
                         </label>
-                        <textarea type="text" id="description-input" rows="6"></textarea>`
+                        <textarea type="text" id="description-input" rows="6" placeholder="Enter description"></textarea>`
                         : ``
                     }
                 </div>

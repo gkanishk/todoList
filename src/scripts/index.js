@@ -29,7 +29,7 @@
   });
   // Click event for buttons
   rootContainer.addEventListener("click", (event) => {
-    // event.stopPropagation();
+    event.stopPropagation();
     /**
      * This will have five events for:
      * 1. Adding a new list
@@ -59,7 +59,7 @@
         case "add-modal-button":
           const title = document.getElementById("title-input");
           const description = document.getElementById("description-input");
-          if (title.value.length === 0) return alert("enter all details");
+          if (title.value.length === 0) return alert("Enter title");
           if (listId === "") {
             const list = getListAttributes(todoList, title.value);
             if (list) {

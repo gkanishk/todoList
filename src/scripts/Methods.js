@@ -24,13 +24,13 @@ const AppMethods = (function () {
                     <span class="list-title">
                     ${title} <span class="card-count">${cards.length}</span>
                     </span>
-                    <button class="delete-list-button" listId='${id}' listIndex='${index}'><i class="far fa-trash-alt"></i></button>
+                    <button class="delete-list-button" listId='${id}' listIndex='${index}' title='Delete List'><i class="far fa-trash-alt"></i></button>
                   </div>
                   <div class="list-body" listId='${id}'>
                     ${
                       cards.length > 0
                         ? cards.map((card) => getCard(card, id)).join("")
-                        : `<span class="empty-list">No Cards</span>`
+                        : `<span class="empty-list">No Cards Available</span>`
                     }
                   </div>
                   <div class="list-footer">
