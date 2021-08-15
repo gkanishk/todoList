@@ -9,48 +9,18 @@
     getListContainer,
     getUpdatedList,
     cancelModal,
-    addListCard,
+    getListAttributes,
   } = AppFunctions;
 
   const { rootContainer } = Components;
 
   // ****State****
   let todoList = getItemFromLocalStorage("todoList") ?? [];
-  todoList = [
-    {
-      id: "!234",
-      title: "Todo",
-      cards: [
-        {
-          id: "112233",
-          title: "Complete todo app",
-          description: "Complete using vanilla js",
-        },
-        {
-          id: "112235",
-          title: "Complete on finish app",
-          description: "Complete using vanilla js",
-        },
-      ],
-    },
-    {
-      id: "!233",
-      title: "In Progress",
-      cards: [
-        {
-          id: "112237",
-          title: "Complete on progress app",
-          description: "Complete using vanilla js",
-        },
-      ],
-    },
-  ];
-
-  updateList(todoList);
 
   function updateList(list) {
     todoList = list;
     saveItemToLocalStorage("todoList", todoList);
+    renderList(todoList);
   }
 
   // ****Event Listeners****
@@ -70,28 +40,60 @@
      * 4. Deleting a card
      * 5. Marking card as favoriate
      */
-    if (event.target.nodeName === "BUTTON") {
-      switch (event.target.className) {
+    const buttonEvent = event.target;
+    if (buttonEvent.nodeName === "BUTTON") {
+      const cardId = buttonEvent.attributes?.cardid?.value;
+      const listId = buttonEvent.attributes?.listid?.value;
+      const params = {
+        listId,
+        cardId,
+      };
+      switch (buttonEvent.className) {
         case "add-list-button":
           renderModal("List");
           break;
         case "add-card-button":
-          renderModal("Card", event.target.attributes.listid.value);
+          renderModal("Card", listId);
           break;
         case "cancel-modal-button":
           cancelModal();
           break;
         case "add-modal-button":
-          addListCard(event.target);
+          const title = document.getElementById("title-input");
+          const description = document.getElementById("description-input");
+          if (title.value.length === 0) return alert("enter all details");
+          if (listId === "") {
+            const list = getListAttributes(todoList, title.value);
+            if (list) {
+              todoList.push(list);
+              updateList(todoList);
+              cancelModal();
+            } else {
+              alert("Enter another title");
+            }
+          } else {
+            params.title = title.value;
+            params.description = description.value;
+            params.type = "AddCard";
+            todoList = getUpdatedList(todoList, params);
+            updateList(todoList);
+            cancelModal();
+          }
           break;
         case "delete-list-button":
-          console.log("delete list btn");
+          const index = buttonEvent.attributes.listindex.value;
+          todoList.splice(index, 1);
+          updateList(todoList);
           break;
         case "delete-card-button":
-          console.log("delete card clicked");
+          params.type = "RemoveCard";
+          todoList = getUpdatedList(todoList, params);
+          updateList(todoList);
           break;
         case "favourite-button":
-          console.log("Add to fav card");
+          params.type = "MarkCardAsFavourite";
+          todoList = getUpdatedList(todoList, params);
+          updateList(todoList);
           break;
         default:
           break;
@@ -135,7 +137,7 @@
       const params = {
         listId,
         cardId,
-        type: "AddCard",
+        type: "MoveCard",
       };
       todoList = getUpdatedList(todoList, params);
       updateList(todoList);

@@ -47,7 +47,7 @@ body,
 
 .list-container {
   height: 100%;
-  width: 250px;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,8 +74,6 @@ body,
   overflow-y: scroll;
   height: 100%;
   width: 100%;
-
-  background-color: aqua;
 }
 
 .card-container {
@@ -89,4 +87,9 @@ body,
 
 .card-header {
   display: flex;
+}
+
+#container {
+  width: 100vw;
+  overflow-y: auto;
 }

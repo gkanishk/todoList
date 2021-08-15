@@ -7,15 +7,15 @@ const Components = (function () {
                         <button class="add-list-button">Add List</button>
                     </nav>`;
 
-  const getCard = ({ id, title, description }) =>
+  const getCard = ({ id, title, description }, listId) =>
     `<div class="card-container" cardId=${id} draggable="true" >
         <div class="card-header">
             <span class="card-title">
                 ${title}
             </span>
             <div class="card-button-container">
-            <button class="favourite-button" cardid=${id}>Fav</button>
-            <button class="delete-card-button"  cardid=${id}>Delete</button>
+            <button class="favourite-button" cardid='${id}' listId='${listId}'>Fav</button>
+            <button class="delete-card-button"  cardid='${id}' listId='${listId}'>Delete</button>
             </div>
         </div>
         <p class="card-description">
@@ -38,7 +38,7 @@ const Components = (function () {
                         ? `<label>
                             Description
                         </label>
-                        <textarea type="text" id="title-input" rows="6"></textarea>`
+                        <textarea type="text" id="description-input" rows="6"></textarea>`
                         : ``
                     }
                 </div>

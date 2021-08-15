@@ -1,6 +1,7 @@
 const AppFunctions = (function () {
   // Imports
   const { rootContainer, getHeader, getCard, getModal } = Components;
+  const { generateId } = utils;
 
   // Function declaration
   function renderHeader() {
@@ -9,6 +10,7 @@ const AppFunctions = (function () {
 
   function renderList(todoList = []) {
     const listContainer = document.createElement("div");
+    const previousContainer = document.getElementById("container");
     listContainer.id = "container";
     if (todoList.length === 0) {
       listContainer.style.flexDirection = "column";
@@ -23,7 +25,7 @@ const AppFunctions = (function () {
                     <button class="delete-list-button" listId='${id}' listIndex='${index}'>Delete List</button>
                   </div>
                   <div class="list-body" listId='${id}'>
-                    ${cards.map((card) => getCard(card)).join("")}
+                    ${cards.map((card) => getCard(card, id)).join("")}
                   </div>
                   <div class="list-footer">
                     <button class="add-card-button" listid='${id}' >Add Card</button>
@@ -32,6 +34,9 @@ const AppFunctions = (function () {
         })
         .join("")}`;
       listContainer.innerHTML = listItems;
+    }
+    if (previousContainer) {
+      return rootContainer.replaceChild(listContainer, previousContainer);
     }
     return rootContainer.appendChild(listContainer);
   }
@@ -68,8 +73,9 @@ const AppFunctions = (function () {
   }
 
   function getUpdatedList(listItems = [], params = {}) {
+    const list = listItems.find((list) => list.id === params?.listId);
     switch (params?.type) {
-      case "AddCard":
+      case "MoveCard":
         const getCard = getCardFromLists(listItems, params?.cardId);
         // Check whether card exists in list or not.
         if (
@@ -86,14 +92,40 @@ const AppFunctions = (function () {
           });
         }
         return listItems;
-        break;
+      case "AddCard":
+        const createCard = {
+          id: generateId(),
+          title: params?.title,
+          description: params?.description,
+          isFavoriate: false,
+          createdAt: new Date(),
+        };
+        list.cards.push(createCard);
+        return listItems;
+      case "RemoveCard":
+        list.cards = list.cards.filter((card) => card.id !== params?.cardId);
+        return listItems;
+      case "MarkCardAsFavourite":
+        const card = list.cards.find((card) => card.id === params?.cardId);
+        card.isFavoriate = !card.isFavoriate;
+        return listItems;
       default:
         break;
     }
   }
 
-  function addListCard(buttonEvent) {
-    console.log(buttonEvent, buttonEvent.attributes.listId.value);
+  function getListAttributes(listItems, title) {
+    const checkList = listItems.find((list) => list.title === title);
+    if (checkList) {
+      return null;
+    }
+    const list = {
+      id: generateId(),
+      title: title,
+      createdAt: new Date(),
+      cards: [],
+    };
+    return list;
   }
 
   function cancelModal() {
@@ -123,6 +155,6 @@ const AppFunctions = (function () {
     getListContainer,
     getUpdatedList,
     cancelModal,
-    addListCard,
+    getListAttributes,
   };
 })();
