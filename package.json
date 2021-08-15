@@ -1,0 +1,25 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "Todo app to manage all your tasks",
+  "main": "src/index.js",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "start": "parcel index.html",
+    "build-prod": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gkanishk/todoList.git"
+  },
+  "author": "gkanishk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gkanishk/todoList/issues"
+  },
+  "homepage": "https://github.com/gkanishk/todoList#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "latest"
+  }
+}
