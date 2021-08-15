@@ -1,5 +1,6 @@
 const Components = (function () {
   const rootContainer = document.querySelector("#root");
+  const { getTimeAgo } = utils;
 
   const getHeader = () => {
     return `<nav id="navbar">
@@ -9,7 +10,10 @@ const Components = (function () {
             </nav>`;
   };
 
-  const getCard = ({ id, title, description, isFavoriate }, listId) => {
+  const getCard = (
+    { id, title, description, isFavoriate, createdAt },
+    listId
+  ) => {
     return `<div class="card-container" cardId=${id} draggable="true" >
                 <div class="card-header">
                     <span class="card-title">
@@ -25,6 +29,9 @@ const Components = (function () {
                 <p class="card-description">
                     ${description}
                 </p>
+                <span class="created-ago">Created ${getTimeAgo(
+                  new Date(createdAt)
+                )} ago</span>
             </div>`;
   };
 
