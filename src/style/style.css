@@ -215,3 +215,24 @@ label {
 button {
   cursor: pointer;
 }
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#created-filter-container {
+  margin-left: 1rem;
+}
+
+.sortby-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0.5rem 2rem 0 0;
+}
+
+.sortby-container label {
+  font-size: smaller;
+}

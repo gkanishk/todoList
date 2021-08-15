@@ -11,12 +11,17 @@
     cancelModal,
     getListAttributes,
     getSearchResult,
+    getSortedValue,
   } = AppMethods;
 
   const { rootContainer } = Components;
 
   // ****State****
   let todoList = getItemFromLocalStorage("todoList") ?? [];
+  let filters = {
+    name: "",
+    date: "",
+  };
 
   // ****Event Listeners****
 
@@ -152,12 +157,32 @@
     }
   });
 
+  rootContainer.addEventListener("change", (event) => {
+    switch (event.target.name) {
+      case "date-filter":
+        filters.date = event.target.value;
+        sortCards();
+        break;
+      case "name-filter":
+        filters.name = event.target.value;
+        sortCards();
+        break;
+      default:
+        break;
+    }
+  });
+
   // ****Methods****
 
   function updateList(list) {
     todoList = list;
     saveItemToLocalStorage("todoList", todoList);
-    renderList(todoList);
+    sortCards();
+  }
+
+  function sortCards() {
+    const result = getSortedValue(todoList, filters);
+    renderList(result);
   }
 
   // ****Mounting****

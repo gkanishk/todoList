@@ -1,11 +1,12 @@
 const AppMethods = (function () {
   // Imports
-  const { rootContainer, getHeader, getCard, getModal } = Components;
+  const { rootContainer, getHeader, getCard, getModal, getFilters } =
+    Components;
   const { generateId } = utils;
 
   // Function declaration
   function renderHeader() {
-    rootContainer.innerHTML += getHeader();
+    rootContainer.innerHTML += getHeader() + getFilters();
   }
 
   function renderList(todoList = []) {
@@ -158,6 +159,28 @@ const AppMethods = (function () {
     return items;
   }
 
+  function getSortedValue(listItems = [], filters) {
+    if (filters.name.length > 0) {
+      listItems.forEach((list) => {
+        list.cards.sort((cardOne, cardTwo) =>
+          filters.name === "ascending"
+            ? cardOne.title.localeCompare(cardTwo.title)
+            : cardTwo.title.localeCompare(cardOne.title)
+        );
+      });
+    }
+    if (filters.date.length > 0) {
+      listItems.forEach((list) => {
+        list.cards.sort((cardOne, cardTwo) =>
+          filters.date === "past"
+            ? new Date(cardOne.createdAt) - new Date(cardTwo.createdAt)
+            : new Date(cardTwo.createdAt) - new Date(cardOne.createdAt)
+        );
+      });
+    }
+    return listItems;
+  }
+
   function cancelModal() {
     const modal = document.getElementsByClassName("modal");
     rootContainer.removeChild(modal[0]);
@@ -187,5 +210,6 @@ const AppMethods = (function () {
     cancelModal,
     getListAttributes,
     getSearchResult,
+    getSortedValue,
   };
 })();
