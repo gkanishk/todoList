@@ -10,7 +10,8 @@
     getUpdatedList,
     cancelModal,
     getListAttributes,
-  } = AppFunctions;
+    getSearchResult,
+  } = AppMethods;
 
   const { rootContainer } = Components;
 
@@ -27,7 +28,10 @@
 
   // Event for global Search
   rootContainer.addEventListener("input", (event) => {
-    if (event.target.id === "search-box") console.log(event.target.value);
+    if (event.target.id === "search-box") {
+      const result = getSearchResult(todoList, event.target.value);
+      renderList(result);
+    }
   });
   // Click event for buttons
   rootContainer.addEventListener("click", (event) => {

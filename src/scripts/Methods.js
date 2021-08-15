@@ -1,4 +1,4 @@
-const AppFunctions = (function () {
+const AppMethods = (function () {
   // Imports
   const { rootContainer, getHeader, getCard, getModal } = Components;
   const { generateId } = utils;
@@ -115,7 +115,9 @@ const AppFunctions = (function () {
   }
 
   function getListAttributes(listItems, title) {
-    const checkList = listItems.find((list) => list.title === title);
+    const checkList = listItems.find(
+      (list) => list.title.toLowerCase() === title.toLowerCase()
+    );
     if (checkList) {
       return null;
     }
@@ -126,6 +128,21 @@ const AppFunctions = (function () {
       cards: [],
     };
     return list;
+  }
+
+  function getSearchResult(listItems = [], searchValue = "") {
+    let items = JSON.parse(JSON.stringify(listItems));
+    if (searchValue.length > 0) {
+      items.forEach((list) => {
+        list.cards = list.cards.filter(
+          (card) =>
+            card.title.toLowerCase().includes(searchValue) ||
+            card.description.toLowerCase().includes(searchValue)
+        );
+      });
+      items = items.filter((list) => list.cards.length > 0);
+    }
+    return items;
   }
 
   function cancelModal() {
@@ -156,5 +173,6 @@ const AppFunctions = (function () {
     getUpdatedList,
     cancelModal,
     getListAttributes,
+    getSearchResult,
   };
 })();
