@@ -30,10 +30,7 @@ function getTimeAgo(date) {
   if (interval > 1) {
     return Math.floor(interval) + " minutes";
   }
-  if (Math.floor(seconds) === 0) {
-    return "few seconds";
-  }
-  return Math.floor(seconds) + " seconds";
+  return "few seconds";
 }
 
 export { uuidv4 as generateId, getTimeAgo };
