@@ -192,7 +192,7 @@ rootContainer.addEventListener("keyup", function (event) {
     event.target.id === "description-input"
   ) {
     const button = document.querySelector(".add-modal-button");
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && button) {
       event.preventDefault();
       button.click();
     }
