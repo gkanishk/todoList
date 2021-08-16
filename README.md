@@ -7,6 +7,10 @@
 
 A web application where you can manage and plan your tasks by creating lists and adding cards according to tasks.
 
+<div align="center">
+    <img width="720" align="center" alt="Screenshot 2021-08-16 at 9 54 30 AM" src="https://user-images.githubusercontent.com/33570551/129511492-87f2dc3d-bd9f-4117-a609-d06f9ac840a8.png">
+    </div>
+
 
 ## Technology Stack
 ![html5](https://img.shields.io/badge/frontend-html5-orange?style=flat&logo=Html5)
