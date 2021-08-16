@@ -134,7 +134,7 @@ body,
   flex: 1;
   overflow-y: scroll;
   height: 100%;
-  width: 100%;
+  width: max-content;
 }
 
 .list-footer {
@@ -235,4 +235,9 @@ button {
 
 .sortby-container label {
   font-size: smaller;
+}
+
+#title-input,
+#description-input {
+  padding: 0.3rem;
 }

@@ -162,7 +162,7 @@ rootContainer.addEventListener("drop", function (event) {
     listBodyElement.appendChild(draggedCard);
   }
 });
-
+// Events for sortby filter
 rootContainer.addEventListener("change", (event) => {
   switch (event.target.name) {
     case "date-filter":
@@ -183,6 +183,19 @@ rootContainer.addEventListener("change", (event) => {
       break;
     default:
       break;
+  }
+});
+// // Event for enter button
+rootContainer.addEventListener("keyup", function (event) {
+  if (
+    event.target.id === "title-input" ||
+    event.target.id === "description-input"
+  ) {
+    const button = document.querySelector(".add-modal-button");
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      button.click();
+    }
   }
 });
 
