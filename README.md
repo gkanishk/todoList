@@ -1,7 +1,7 @@
 <p>
     <h1 align="center">Todo List</h1>
     <div align="center">
-    <img src="https://img.shields.io/badge/create-list-brightgreenstyle=flat" alt="list"> <img src="https://img.shields.io/badge/add-cards-green?style=flat" alt="cards"> <a href="https://app.netlify.com/sites/musology/deploys"><img src="https://api.netlify.com/api/v1/badges/7646b281-d028-4ca5-88f8-6c9a0e064dee/deploy-status" alt="Netlify Status"></a>
+    <img src="https://img.shields.io/badge/create-list-brightgreenstyle=flat" alt="list"> <img src="https://img.shields.io/badge/add-cards-green?style=flat" alt="cards"> <a href="https://app.netlify.com/sites/gkanishk-todolist/deploys"><img src="https://api.netlify.com/api/v1/badges/7646b281-d028-4ca5-88f8-6c9a0e064dee/deploy-status" alt="Netlify Status"></a>
     </div>
 </p>
 
